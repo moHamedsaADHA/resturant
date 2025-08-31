@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="login.css" />
+
+  <!-- JS -->
+  <script defer src="sidebar.js"></script>
+  <style>
+  /* المؤشر المخصص */
+  .custom-cursor {
+    position: fixed;
+    top: 0; left: 0;
+    width: 20px; height: 20px;
+    border: 2px solid #ffc107;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out;
+    z-index: 2000;
+  }
+  .cursor-click {
+    transform: translate(-50%, -50%) scale(0.7);
+    background: rgba(255, 193, 7, 0.3);
+  }
+
+  /* تأثير ripple عند الضغط */
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 193, 7, 0.3);
+    animation: ripple-animation 0.6s linear;
+    pointer-events: none;
+    z-index: 1500;
+  }
+  @keyframes ripple-animation {
+    from {
+      transform: scale(0);
+      opacity: 0.5;
+    }
+    to {
+      transform: scale(10);
+      opacity: 0;
+    }
+  }
+</style>
+
+</head>
+<body>
+  <div class="custom-cursor" id="customCursor"></div>
+
+
+  <!-- Burger Menu -->
+  <div class="burger" onclick="toggleSidebar()">☰</div>
+
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="sign up.html">sign up</a>
+    <a href="#">About</a>
+    <a href="#">Menu</a>
+    <a href="#">Gallery</a>
+    <a href="#">Contact</a>
+    <a href="#">Testimonials</a>
+  </div>
+
+  <!-- Main Login Section -->
+  <main class="login-page">
+    <section class="login-box">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input class="mosha" type="text" id="username" placeholder="Username" required />
+        <input class="mosha2" type="password" placeholder="Password" required />
+        <button type="submit" class="login-btn">Login</button>
+        <p class="signup-link">Don't have an account? <a href="sign up.html">Sign Up</a></p>
+      </form>
+    </section>
+  </main>
+
+  <!-- Hero Image (Background Image Behind Login Box) -->
+  <div class="hero-image-wrapper1">
+    <img src="/desserts.png" alt="Coffee Cup" class="hero-image" />
+  </div>
+
+  <!-- JS Script to Save Username -->
+  <!-- <script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault(); // Stop form reload
+      const username = document.getElementById("username").value.trim();
+      if (username) {
+        localStorage.setItem("userName", username);
+        window.location.href = "dashboard.html";
+      }
+    });
+  </script> -->
+  <script>
+  const cursor = document.getElementById('customCursor');
+
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.top = e.clientY + 'px';
+    cursor.style.left = e.clientX + 'px';
+  });
+
+  document.addEventListener('mousedown', () => {
+    cursor.classList.add('cursor-click');
+  });
+
+  document.addEventListener('mouseup', () => {
+    cursor.classList.remove('cursor-click');
+  });
+
+  document.addEventListener('click', (e) => {
+    const ripple = document.createElement('div');
+    ripple.className = 'ripple';
+    // const size = Math.max(window.innerWidth, window.innerHeight);
+        const size = 15;
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = (e.clientX - size/2) + 'px';
+    ripple.style.top = (e.clientY - size/2) + 'px';
+    document.body.appendChild(ripple);
+    ripple.addEventListener('animationend', () => ripple.remove());
+  });
+</script>
+
+</body>
+
+</html>
