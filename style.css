@@ -16,7 +16,7 @@
 
 /* ====== Body ====== */
 body, html {
-  background-image: url("/restaurant-4k-wallpapers.jpg");
+  background-image: url("restaurant-4k-wallpapers.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
