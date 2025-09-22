@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Testers - Coffee Shop</title>
+  <link rel="stylesheet" href="testers.css" />
+</head>
+<body>
+  <!-- Dark Mode Toggle -->
+  <div class="dark-mode-toggle" onclick="toggleDarkMode()" style="position: fixed; top: 20px; left: 20px; z-index: 1102; background: rgba(255, 193, 7, 0.9); color: #3b141c; padding: 10px; border-radius: 50%; cursor: pointer; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 20px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);">
+    🌙
+  </div>
+
+  <!-- ===== Burger Menu ===== -->
+  <div class="burger" onclick="toggleSidebar()">☰</div>
+  <div id="sidebar" class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="login.html">Sign In</a>
+    <a href="signup.html">Sign Up</a>  
+    <a href="index.html">About</a>
+    <a href="menu.html">Menu</a>
+    <a href="chat_mosha.html">Contact</a>
+  </div>
+
+  <!-- Overlay -->
+  <div id="overlay" class="overlay" onclick="closeSidebar()"></div>
+
+  <!-- ====== Main Content ====== -->
+  <main>
+    <section class="testers-section">
+      <div class="container">
+        <div class="testers-header">
+          <h2 class="testers-title">Meet Our Taste Experts</h2>
+          <p class="testers-subtitle">
+            Our dedicated team of professional taste testers ensures every cup meets our highest standards of quality and flavor.
+          </p>
+        </div>
+
+        <div class="testers-grid">
+          <!-- Tester Cards -->
+          <div class="tester-card">
+            <div class="tester-image1">
+              <div class="image-placeholder" alt="James Rodriguez"></div>
+              <div class="tester-badge">Lead Tester</div>
+            </div>
+            <div class="tester-content">
+              <h3 class="tester-name">Mohamed Saad</h3>
+              <p class="tester-role">Senior Coffee Curator</p>
+              <p class="tester-description">
+                With over 15 years of experience in coffee tasting, Saad leads our quality assurance team and has developed our signature blends.
+              </p>
+            </div>
+          </div>
+          <div class="tester-card">
+            <div class="tester-image2">
+              <div class="image-placeholder" alt="Salah Chen"></div>
+              <div class="tester-badge">Expert</div>
+            </div>
+            <div class="tester-content">
+              <h3 class="tester-name">Salah Chen</h3>
+              <p class="tester-role">Flavor Profile Specialist</p>
+              <p class="tester-description">
+                Salah specializes in identifying subtle flavor notes and ensuring consistency across all our coffee varieties. Her palate is legendary.
+              </p>
+            </div>
+          </div>
+          <div class="tester-card">
+            <div class="tester-image3">
+              <div class="image-placeholder" alt="Michael Thompson"></div>
+              <div class="tester-badge">Certified</div>
+            </div>
+            <div class="tester-content">
+              <h3 class="tester-name">Michael Thompson</h3>
+              <p class="tester-role">Quality Assurance Manager</p>
+              <p class="tester-description">
+                Michael ensures every batch meets our strict quality standards. He's certified by the Specialty Coffee Association.
+              </p>
+            </div>
+          </div>
+          <div class="tester-card">
+            <div class="tester-image4">
+              <div class="image-placeholder" alt="Ali Mahmoud"></div>
+              <div class="tester-badge">Innovator</div>
+            </div>
+            <div class="tester-content">
+              <h3 class="tester-name">Ali Mahmoud</h3>
+              <p class="tester-role">Beverage Innovation Lead</p>
+              <p class="tester-description">
+                Ali creates our seasonal specials and innovative drink combinations. He's always experimenting with new flavors and techniques.
+              </p>
+            </div>
+          </div>
+          <div class="tester-card">
+            <div class="tester-image5">
+              <div class="image-placeholder" alt="Sarah Park"></div>
+              <div class="tester-badge">Trainer</div>
+            </div>
+            <div class="tester-content">
+              <h3 class="tester-name">Sarah Park</h3>
+              <p class="tester-role">Training & Development</p>
+              <p class="tester-description">
+                Sarah trains our baristas and new taste testers. She ensures our team maintains the highest standards of coffee knowledge.
+              </p>
+            </div>
+          </div>
+          <div class="tester-card">
+            <div class="tester-image6">
+              <div class="image-placeholder" alt="Maria Santos"></div>
+              <div class="tester-badge">Sourcing Expert</div>
+            </div>
+            <div class="tester-content">
+              <h3 class="tester-name">Maria Santos</h3>
+              <p class="tester-role">Bean Sourcing Specialist</p>
+              <p class="tester-description">
+                Maria travels the world to source the finest coffee beans. She works directly with farmers to ensure ethical and sustainable practices.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====== Scripts ====== -->
+  <script>
+    // Sidebar
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("active");
+      document.getElementById("overlay").classList.toggle("active");
+    }
+    function closeSidebar() {
+      document.getElementById("sidebar").classList.remove("active");
+      document.getElementById("overlay").classList.remove("active");
+    }
+
+    // Dark Mode
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    const toggleButton = document.querySelector('.dark-mode-toggle');
+    
+    if (currentTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        toggleButton.innerHTML = '☀️';
+        toggleButton.style.background = ' #F5DEB3';
+        toggleButton.style.color = '#000000';
+    }
+
+    function toggleDarkMode() {
+        const body = document.body;
+        const toggleButton = document.querySelector('.dark-mode-toggle');
+        
+        body.classList.toggle('dark-mode');
+        
+        if (body.classList.contains('dark-mode')) {
+            toggleButton.innerHTML = '☀️';
+            toggleButton.style.background = ' #F5DEB3';
+            toggleButton.style.color = '#000000';
+            localStorage.setItem('theme', 'dark');
+        } else {
+            toggleButton.innerHTML = '🌙';
+            toggleButton.style.background = 'rgba(255, 193, 7, 0.9)';
+            toggleButton.style.color = '#3b141c';
+            localStorage.setItem('theme', 'light');
+        }
+    }
+  </script>
+</body>
+</html>

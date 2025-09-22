@@ -16,6 +16,52 @@ body {
   padding: 1rem;
 }
 
+/* ====== Dark Mode Styles ====== */
+body.dark-mode {
+  background: #000000;
+  color: #F5DEB3;
+}
+
+body.dark-mode .login-box {
+  background: rgba(245, 222, 179, 0.1);
+  border: 1px solid #F5DEB3;
+}
+
+body.dark-mode .login-box h2 {
+  color: #F5DEB3;
+}
+
+body.dark-mode .login-box input {
+  background: rgba(245, 222, 179, 0.1);
+  border: 1px solid #F5DEB3;
+  color: #F5DEB3;
+}
+
+body.dark-mode .login-box input::placeholder {
+  color: rgba(245, 222, 179, 0.7);
+}
+
+body.dark-mode .login-btn {
+  background: #F5DEB3;
+  color: #000000;
+}
+
+body.dark-mode .login-link {
+  color: #F5DEB3;
+}
+
+body.dark-mode .login-link a {
+  color: #F5DEB3;
+}
+
+body.dark-mode .sidebar {
+  background: #000000;
+}
+
+body.dark-mode .burger {
+  color: #F5DEB3;
+}
+
 /* Burger Menu */
 .burger {
   position: fixed;
@@ -57,7 +103,23 @@ body {
   color: #000;
   transition: background-color 0.8s ease;
   text-decoration: underline;
-  text-decoration-color: #ff0000;
+  text-decoration-color: #ffffffa1;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 999;
+}
+
+.overlay.show {
+  display: block;
 }
 
 /* Placeholder styles */
@@ -213,5 +275,46 @@ body {
 
   .sidebar {
     width: 200px;
+  }
+}
+
+/* المؤشر المخصص */
+.custom-cursor {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 20px; 
+  height: 20px;
+  border: 2px solid #ffc107;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out;
+  z-index: 2000;
+}
+
+.cursor-click {
+  transform: translate(-50%, -50%) scale(0.7);
+  background: rgba(255, 193, 7, 0.3);
+}
+
+/* تأثير ripple عند الضغط */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 193, 7, 0.3);
+  animation: ripple-animation 0.6s linear;
+  pointer-events: none;
+  z-index: 1500;
+}
+
+@keyframes ripple-animation {
+  from {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  to {
+    transform: scale(10);
+    opacity: 0;
   }
 }

@@ -8,14 +8,62 @@
   box-sizing: border-box;
 }
 
+
 :root {
-  --primary-color: #3b141c;
-  --secondary-color: #ffc107;
-  --white-color: #ffffff;
+  --primary-color: #3b141c;     /* اللون الأساسي (غامق بني/عنابي) */
+  --secondary-color: #ffc107;  /* اللون الثانوي (أصفر ذهبي) */
+  --white-color: #ffffff;      /* اللون الأبيض */
+  --text-color: #333333;       /* لون النصوص */
+  --bg-light: #f8f9fa;         /* خلفية فاتحة */
+  --border-color: #ddd;        /* لون البوردر */
+}
+
+/* ====== Dark Mode Styles ====== */
+/* ====== Dark Mode Styles ====== */
+body.dark-mode {
+  --primary-color: #F5DEB3;     /* بيج */
+  --secondary-color: #F5DEB3;   /* بيج */
+  --white-color: #F5DEB3;       /* بيج */
+  --text-color: #F5DEB3;        /* نص بيج */
+  --bg-light: #000000;          /* خلفية سوداء */
+  --border-color: #F5DEB3;      /* حدود بيج */
+}
+
+body.dark-mode .home-page {
+  background: #000000 !important;
+  background-image: none !important;
+  color: #F5DEB3;
+}
+
+body.dark-mode .navbar {
+  background-color: rgba(245, 222, 179, 0.1); /* بيج شفاف */
+  backdrop-filter: blur(10px);
+}
+
+body.dark-mode .sidebar {
+  background-color: #000000;
+  border-left: 2px solid #F5DEB3;
+}
+
+body.dark-mode .button {
+  background: linear-gradient(to right, #F5DEB3, #000000);
+  color: #000000;
+}
+
+body.dark-mode .button:hover {
+  color: #F5DEB3;
+}
+
+body.dark-mode .custom-cursor {
+  border: 2px solid #F5DEB3;
+}
+
+body.dark-mode .ripple {
+  background: #F5DEB3;
 }
 
 /* ====== Body ====== */
-body, html {
+.home-page {
   background-image: url("restaurant-4k-wallpapers.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -23,7 +71,11 @@ body, html {
   margin: 0;
   padding: 0;
   color: var(--white-color);
+  transition: transform 0.3s ease;
+  min-height: 100vh;
+  overflow-x: scroll;
 }
+
 
 /* ====== Header & Navbar ====== */
 header {
@@ -33,6 +85,8 @@ header {
   padding: 1rem 2rem;
 }
 
+
+
 .navbar {
   display: flex;
   align-items: center;
@@ -40,7 +94,7 @@ header {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.03); /* شفاف جزئي */
   backdrop-filter: blur(5px);           /* تأثير طفيف على الخلفية */
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 100px 100px;
   padding: 0.5rem 1rem;
   gap: 1rem;
   z-index: 1000;
@@ -51,6 +105,7 @@ header {
   font-size: 2rem;
   font-weight: bold;
   color: var(--white-color);
+  text-shadow: 2px 2px 4px rgb(0, 0, 0);
   font-family: 'Pacifico', cursive;
   animation: bounce 1.5s ease-in-out;
 }
@@ -64,7 +119,10 @@ header {
 /* Menu */
 .navbar .nav-menu {
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
+}
+.nav-menu li {
+  margin-left: 20px; /* مسافة بين اللينكات */
 }
 
 .navbar .nav-link {
@@ -100,7 +158,7 @@ header {
 .hero-details .title {
   font-family: 'Pacifico', cursive;
   font-size: 2.5rem;
-  color: var(--white-color);
+  color:white;
   transition: color 0.3s ease;
 }
 
@@ -159,7 +217,7 @@ header {
   right: -250px;
   width: 250px;
   height: calc(100% - 80px);
-  background-color: rgba(0, 0, 0, 0.3); /* شفاف جزئي */
+  background-color: rgb(116, 55, 8);
   color: var(--white-color);
   padding: 2rem 1rem;
   display: flex;
@@ -221,33 +279,7 @@ header {
 
 /* ====== Responsive ====== */
 @media (max-width: 768px) {
-  .section-content {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .hero-details {
-    max-width: 100%;
-  }
-
-  .buttons {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
   .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .nav-menu {
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .burger {
-    top: 15px;
-    right: 10px;
-  }
+    display: none;
+    }
 }

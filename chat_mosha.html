@@ -1,26 +1,181 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>صفحة الدردشة - MoSHa</title>
+  <title>Contact Us - Coffee Shop</title>
+  <!-- <link rel="stylesheet" href="style.css" /> -->
   <link rel="stylesheet" href="chat_mosha.css" />
 </head>
+
 <body>
-  <div class="chat-container">
-    <div class="chat-header">Chat with MoSHa </div>
-
-    <div class="chat-box">
-      <div class="message received">إزيك يا محمد؟</div>
-      <div class="message sent">تمام الحمد لله، وانت؟</div>
-      <div class="message received">أنا كويس، شغال على المشروع؟</div>
-      <div class="message sent">أيوه خلاص خلصت اهو والحمدلله ✌️</div>
-    </div>
-
-    <div class="chat-input-area">
-      <input type="text" placeholder="اكتب رسالتك..." />
-      <button>إرسال</button>
-    </div>
+  
+  <!-- Dark Mode Toggle -->
+  <div class="dark-mode-toggle" onclick="toggleDarkMode()" style="position: fixed; top: 20px; left: 20px; z-index: 1102; background: rgba(255, 193, 7, 0.9); color: #3b141c; padding: 10px; border-radius: 50%; cursor: pointer; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 20px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);">
+    🌙
   </div>
+
+  <header>
+    <div class="burger" onclick="toggleSidebar()">☰</div>
+    <div id="sidebar" class="sidebar">
+      <a href="index.html">Home</a>
+      <a href="login.html">Sign In</a>
+      <a href="sign up.html">Sign Up</a>
+      <a href="index.html">About</a>
+      <a href="menu.html">Menu</a>
+      <a href="testers.html">Testers</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-header">
+          <h2 class="contact-title">Get In Touch</h2>
+          <p class="contact-subtitle">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+        </div>
+
+        <div class="contact-content">
+          <div class="contact-info">
+            <h3>Contact Information</h3>
+
+            <div class="info-item">
+              <div class="info-icon">📍</div>
+              <div class="info-details">
+                <h4>Address</h4>
+                <p>Sheraton Coffee Street<br>Downtown, City Qena</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">📞</div>
+              <div class="info-details">
+                <h4>Phone</h4>
+                <p>
+                  +201092731005 
+                  <a href="https://wa.me/201092731005" target="_blank" style="margin-left:10px; color:#25D366; font-size:20px;">
+                    <i class="fab fa-whatsapp"></i>
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">✉️</div>
+              <div class="info-details">
+                <h4>Email</h4>
+                <p>mohamed.saad2827822772@gmail.com</p>
+              </div>
+            </div>
+
+            <div class="social-links">
+              <h4>Follow Me</h4>
+              <div class="social-icons">
+                <a href="https://www.facebook.com/mody.mohammed.9210" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/mohamed_1_6_7/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/moHamedsaADHA" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/mohamed-saad-b33767320/" target="_blank"><i class="fab fa-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-container">
+            <form class="contact-form" id="contactForm">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required>
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone">
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <select id="subject" required>
+                  <option value="">Select a subject</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="catering">Catering Services</option>
+                  <option value="feedback">Feedback</option>
+                  <option value="complaint">Complaint</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" rows="6" required></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn">📤 Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("active");
+    }
+
+    // قفل القائمة لو ضغطت بره
+    document.addEventListener("click", function (event) {
+      const sidebar = document.getElementById("sidebar");
+      const burger = document.querySelector(".burger");
+
+      if (
+        sidebar.classList.contains("active") &&
+        !sidebar.contains(event.target) &&
+        !burger.contains(event.target)
+      ) {
+        sidebar.classList.remove("active");
+      }
+    });
+  </script>
+
+  <!-- Dark Mode JavaScript -->
+  <script>
+    // Check for saved dark mode preference or default to light mode
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    const toggleButton = document.querySelector('.dark-mode-toggle');
+    
+    if (currentTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        toggleButton.innerHTML = '☀️';
+        toggleButton.style.background = ' #F5DEB3';
+        toggleButton.style.color = '#000000';
+    }
+
+    function toggleDarkMode() {
+        const body = document.body;
+        const toggleButton = document.querySelector('.dark-mode-toggle');
+        
+        body.classList.toggle('dark-mode');
+        
+        if (body.classList.contains('dark-mode')) {
+            // Switch to dark mode
+            toggleButton.innerHTML = '☀️';
+            toggleButton.style.background = ' #F5DEB3';
+            toggleButton.style.color = '#000000';
+            localStorage.setItem('theme', 'dark');
+        } else {
+            // Switch to light mode
+            toggleButton.innerHTML = '🌙';
+            toggleButton.style.background = 'rgba(255, 193, 7, 0.9)';
+            toggleButton.style.color = '#3b141c';
+            localStorage.setItem('theme', 'light');
+        }
+    }
+  </script>
 </body>
 </html>
