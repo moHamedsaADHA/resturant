@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login</title>
   <!-- CSS -->
-  <link rel="stylesheet" href="login.css" />
+  <link rel="stylesheet" href="sign.css" />
 </head>
 <body>
   <!-- Custom Cursor -->
@@ -34,7 +34,14 @@
       <h2>Login</h2>
       <form id="loginForm">
         <input class="mosha" type="text" id="username" placeholder="Username" required />
-        <input class="mosha2" type="password" id="password" placeholder="Password" required />
+        <input class="mosha" type="email" id="email" placeholder="Email" required />
+
+        <!-- Password with Eye -->
+        <div class="password-wrapper">
+          <input class="mosha2" type="password" id="password" placeholder="Password" required />
+          <span class="toggle-password" id="togglePassword">👁</span>
+        </div>
+
         <button type="submit" class="login-btn">Login</button>
         <p class="signup-link">Don't have an account? <a href="sign up.html">Sign Up</a></p>
       </form>
@@ -115,6 +122,15 @@
     toggle.addEventListener('click', () => {
       document.body.classList.toggle('dark');
       toggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+    });
+
+    // Toggle Password Visibility
+    const passwordInput = document.getElementById("password");
+    const togglePassword = document.getElementById("togglePassword");
+    togglePassword.addEventListener("click", () => {
+      const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+      passwordInput.setAttribute("type", type);
+      togglePassword.textContent = type === "password" ? "👁" : "🙈";
     });
   </script>
 </body>

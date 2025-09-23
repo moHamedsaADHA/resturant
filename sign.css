@@ -20,7 +20,7 @@ body {
 }
 
 /* Dark Mode */
-body.dark {
+body.dark-mode {
   background: #000000;
   color: #faf0d2;
 }
@@ -106,11 +106,12 @@ body.dark {
   text-decoration: underline;
   text-decoration-color: #ff0000;
 }
+.sidebar a.active { background: #ffc107; color: #000; }
 
 /* Dark Mode Sidebar */
-body.dark .sidebar { background: #3b141c; }
-body.dark .sidebar a { color: #faf0d2; }
-body.dark .sidebar a:hover { color: #000; background: #faf0d2; }
+body.dark-mode .sidebar { background: #3b141c; }
+body.dark-mode .sidebar a { color: #faf0d2; }
+body.dark-mode .sidebar a:hover { color: #000; background: #faf0d2; }
 
 /* Overlay */
 .overlay {
@@ -124,11 +125,27 @@ body.dark .sidebar a:hover { color: #000; background: #faf0d2; }
 }
 .overlay.show { opacity: 1; pointer-events: auto; }
 
-/* Placeholder styles */
+/* Placeholders */
 .mosha::placeholder,
-.mosha2::placeholder { color: #ffffff; font-size: 16px; font-style: italic; font-weight: 500; letter-spacing: 1px; }
-body.dark .mosha::placeholder,
-body.dark .mosha2::placeholder { color: rgba(250,240,210,0.7); }
+.mosha1::placeholder,
+.mosha2::placeholder,
+.mosha3::placeholder,
+.mosha4::placeholder,
+.mosha5::placeholder {
+  color: #ffffff;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+body.dark-mode .mosha::placeholder,
+body.dark-mode .mosha1::placeholder,
+body.dark-mode .mosha2::placeholder,
+body.dark-mode .mosha3::placeholder,
+body.dark-mode .mosha4::placeholder,
+body.dark-mode .mosha5::placeholder {
+  color: rgba(250,240,210,0.7);
+}
 
 /* Login Page */
 .login-page {
@@ -151,11 +168,12 @@ body.dark .mosha2::placeholder { color: rgba(250,240,210,0.7); }
   transition: all 0.5s ease;
 }
 .login-box:hover { background: #fff; box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
-body.dark .login-box { background: rgba(250,240,210,0.1); border: 1px solid #faf0d2; }
+body.dark-mode .login-box { background: rgba(250,240,210,0.1); border: 1px solid #faf0d2; }
 .login-box h2 { margin-bottom: 25px; color: #3b141c; font-weight: 700; font-size: 24px; }
-body.dark .login-box h2 { color: #faf0d2; }
+body.dark-mode .login-box h2 { color: #faf0d2; }
 .login-box input[type="text"],
-.login-box input[type="password"] {
+.login-box input[type="password"],
+.login-box input[type="email"] {
   width: 100%;
   padding: 14px;
   margin: 10px 0;
@@ -166,8 +184,70 @@ body.dark .login-box h2 { color: #faf0d2; }
   font-size: 16px;
   transition: 0.3s;
 }
-body.dark .login-box input { background: rgba(250,240,210,0.1); border: 1px solid #faf0d2; color: #faf0d2; }
+body.dark-mode .login-box input { background: rgba(250,240,210,0.1); border: 1px solid #faf0d2; color: #faf0d2; }
 .login-box input:focus { background: #a0522d; border-color: #ffc107; box-shadow: 0 0 5px #000; }
+
+/* Password Eye */
+/* ===== Password eye positioning (works for .password-container and .password-wrapper) ===== */
+.password-container,
+.password-wrapper {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+/* اعمل مساحة كافية على اليمين داخل حقل الباسورد علشان العين */
+.password-container input[type="password"],
+.password-wrapper input[type="password"] {
+  padding-right: 48px; /* مساحة العين */
+  box-sizing: border-box;
+}
+
+/* ستايل أيقونة العين */
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;               /* المسافة من اليمين */
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  border-radius: 6px;
+  background: transparent;   /* لو حبيت لون للخلفية غيره */
+  color: #ffc107;
+  transition: background .15s, color .15s, transform .08s;
+}
+.toggle-password:active { transform: translateY(-50%) scale(0.95); }
+
+/* حالة مفعّل (لو بتحوّل أيقونة أو لون عند الفتح) */
+.toggle-password.active {
+  color: #000;
+  background: rgba(255,255,255,0.85);
+}
+
+/* Dark mode adjustments (لو بتستخدم body.dark-mode أو body.dark) */
+body.dark-mode .toggle-password,
+body.dark .toggle-password {
+  color: #ffc107;
+}
+body.dark-mode .toggle-password.active,
+body.dark .toggle-password.active {
+  color: #000;
+  background: rgba(250,240,210,0.95);
+}
+
+/* أصغر شاشه */
+@media (max-width: 480px) {
+  .toggle-password { right: 8px; width: 28px; height: 28px; font-size: 16px; }
+  .password-container input[type="password"],
+  .password-wrapper input[type="password"] { padding-right: 42px; }
+}
 
 /* Button */
 .login-box button.login-btn {
@@ -207,8 +287,12 @@ body.dark .login-box input { background: rgba(250,240,210,0.1); border: 1px soli
 .login-box:hover ~ .hero-image-wrapper1 { opacity: 0; }
 .hero-image-wrapper1 img { width: 100%; height: auto; }
 
-/* Signup link */
-.signup-link { position: relative; top: 10px; padding-top: 10px; }
+/* Signup/Login link */
+.login-link { margin-top: 15px; font-size: 14px; color: #333; }
+.login-link a { color: #3b141c; font-weight: 600; text-decoration: none; }
+.login-link a:hover { text-decoration: underline; }
+body.dark-mode .login-link { color: #faf0d2; }
+body.dark-mode .login-link a { color: #ffc107; }
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -217,7 +301,6 @@ body.dark .login-box input { background: rgba(250,240,210,0.1); border: 1px soli
   .sidebar { width: 200px; }
   .hero-image-wrapper1 { width: 80%; top: 60%; }
 }
-
 @media (max-width: 480px) {
   .login-box { padding: 20px 15px; }
   .login-box h2 { font-size: 20px; }

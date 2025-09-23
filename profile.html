@@ -6,7 +6,6 @@
   <title>Profile - Coffee Paradise</title>
   <link rel="stylesheet" href="profile.css"/>
   <script defer src="profile.js"></script>
-  <script defer src="sidebar.js"></script>
 </head>
 
 <body class="profile-page">
@@ -52,7 +51,7 @@
       <!-- Profile Header -->
       <div class="profile-header">
         <div class="profile-avatar">
-          <span id="user-avatar">👤</span>
+          <span id="user-avatar"></span>
         </div>
         <div class="profile-info">
           <h1 id="user-name">Coffee Lover</h1>
@@ -500,6 +499,22 @@
             localStorage.setItem('theme', 'light');
         }
     }
+
+    // إضافة وظيفة السايدبار - يفتح من الجانب الأيمن فقط
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('show');
+    }
+
+    // إغلاق السايدبار عند الضغط خارجه
+    document.addEventListener('click', function(event) {
+        const sidebar = document.getElementById('sidebar');
+        const burger = document.querySelector('.burger');
+        
+        if (!sidebar.contains(event.target) && !burger.contains(event.target)) {
+            sidebar.classList.remove('show');
+        }
+    });
 
     // Set minimum date for reservations to today
     document.getElementById('reservation-date').min = new Date().toISOString().split('T')[0];

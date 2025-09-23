@@ -1,4 +1,4 @@
-// Profile functionality
+// Profile functionality - إصلاح وظيفة السايدبار
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize profile data
     initializeProfile();
@@ -11,6 +11,30 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize forms
     initializeForms();
+});
+
+// إضافة وظيفة السايدبار - الآن يعمل من جهة واحدة (الجانب الأيمن)
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('show');
+}
+
+// إغلاق السايدبار عند الضغط خارجه
+document.addEventListener('click', function(event) {
+    const sidebar = document.getElementById('sidebar');
+    const burger = document.querySelector('.burger');
+    
+    if (!sidebar.contains(event.target) && !burger.contains(event.target)) {
+        sidebar.classList.remove('show');
+    }
+});
+
+// إغلاق السايدبار بمفتاح Escape
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.remove('show');
+    }
 });
 
 function initializeProfile() {

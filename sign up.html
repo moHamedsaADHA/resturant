@@ -6,7 +6,7 @@
   <title>Sign Up</title>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="sign up.css" />
+  <link rel="stylesheet" href="sign.css" />
 </head>
 <body>
   <!-- Custom Cursor -->
@@ -22,7 +22,7 @@
   <div id="sidebar" class="sidebar">
     <a href="index.html">Home</a>
     <a href="login.html">Sign In</a>
-    <a href="sign up.html">Sign Up</a>
+    <a href="sign up.html" class="active">Sign Up</a>
     <a href="index.html">About</a>
     <a href="menu.html">Menu</a>
     <a href="chat_mosha.html">Contact</a>
@@ -71,26 +71,34 @@
     });
 
     // Sidebar functionality
-    const burger   = document.querySelector('.burger');
-    const sidebar  = document.getElementById('sidebar');
-    const overlay  = document.getElementById('overlay');
+    document.addEventListener('DOMContentLoaded', function () {
+      const burger   = document.querySelector('.burger');
+      const sidebar  = document.getElementById('sidebar');
+      const overlay  = document.getElementById('overlay');
 
-    function openSidebar() {
-      sidebar.classList.add('active');
-      overlay.classList.add('show');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeSidebar() {
-      sidebar.classList.remove('active');
-      overlay.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-    burger.addEventListener('click', () => {
-      sidebar.classList.contains('active') ? closeSidebar() : openSidebar();
-    });
-    overlay.addEventListener('click', closeSidebar);
-    sidebar.addEventListener('click', (e) => {
-      if (e.target.tagName === 'A') closeSidebar();
+      function openSidebar() {
+        sidebar.classList.add('active');
+        overlay.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeSidebar() {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+
+      burger.addEventListener('click', () => {
+        if (sidebar.classList.contains('active')) {
+          closeSidebar();
+        } else {
+          openSidebar();
+        }
+      });
+
+      overlay.addEventListener('click', closeSidebar);
+      sidebar.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') closeSidebar();
+      });
     });
 
     // Custom cursor
