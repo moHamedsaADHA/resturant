@@ -54,6 +54,22 @@
   display: block;
 }
 
+
+/* ====== Page Load Animation ====== */
+body {
+  animation: pageDrop 0.5s ease-out;
+}
+
+@keyframes pageDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 /* ====== Dark Mode Styles ====== */
 body.dark-mode {
   --primary-color: #F5DEB3;
