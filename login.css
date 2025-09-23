@@ -16,6 +16,7 @@ body {
   position: relative;
   padding: 1rem;
   transition: background 0.5s, color 0.5s;
+  overflow-x: hidden;
 }
 
 /* Dark Mode */
@@ -198,6 +199,7 @@ body.dark .login-box input { background: rgba(250,240,210,0.1); border: 1px soli
   z-index: 0;
   opacity: 0.25;
   width: 600px;
+  max-width: 90%;
   height: auto;
   transition: opacity 0.4s ease;
   pointer-events: none;
@@ -213,4 +215,13 @@ body.dark .login-box input { background: rgba(250,240,210,0.1); border: 1px soli
   .login-box { max-width: 90%; padding: 30px 20px; }
   .burger { font-size: 1.8rem; }
   .sidebar { width: 200px; }
+  .hero-image-wrapper1 { width: 80%; top: 60%; }
+}
+
+@media (max-width: 480px) {
+  .login-box { padding: 20px 15px; }
+  .login-box h2 { font-size: 20px; }
+  .login-box input, 
+  .login-box button.login-btn { font-size: 14px; padding: 12px; }
+  .hero-image-wrapper1 { width: 90%; top: 65%; }
 }

@@ -7,20 +7,16 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="sign up.css" />
-
-  <!-- JS -->
-  <script defer src="sidebar.js"></script>
 </head>
 <body>
+  <!-- Custom Cursor -->
   <div class="custom-cursor" id="customCursor"></div>
-
-  <!-- Dark Mode Toggle -->
-  <div class="dark-mode-toggle" onclick="toggleDarkMode()" style="position: fixed; top: 20px; right: 80px; z-index: 1102; background: rgba(255, 193, 7, 0.9); color: #3b141c; padding: 10px; border-radius: 50%; cursor: pointer; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 20px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);">
-    🌙
-  </div>
 
   <!-- Burger Menu -->
   <div class="burger">☰</div>
+
+  <!-- Dark Mode Toggle -->
+  <div class="dark-mode-toggle" id="darkModeToggle">🌙</div>
 
   <!-- Sidebar -->
   <div id="sidebar" class="sidebar">
@@ -29,13 +25,10 @@
     <a href="sign up.html">Sign Up</a>
     <a href="index.html">About</a>
     <a href="menu.html">Menu</a>
-    <!-- <a href="#">Gallery</a> -->
     <a href="chat_mosha.html">Contact</a>
     <a href="Testers.html">Testers</a>
   </div>
-
-  <!-- Overlay -->
-  <div id="overlay" class="overlay"></div>
+  <div class="overlay" id="overlay"></div>
 
   <!-- Main Signup Section -->
   <main class="login-page">
@@ -46,7 +39,7 @@
         <input class="mosha1" type="text" placeholder="Phone Number" required />
         <input class="mosha2" type="email" placeholder="Email" required />
 
-        <!-- حقل الباسورد + العين -->
+        <!-- حقل الباسورد + زر العين -->
         <div class="password-container">
           <input class="mosha3" type="password" id="password" placeholder="Password" required />
           <span class="toggle-password" id="togglePassword">&#128065;</span>
@@ -65,8 +58,9 @@
     </div>
   </main>
 
-  <!-- Save Username -->
+  <!-- JavaScript -->
   <script>
+    // حفظ الاسم وتحويل للدashboard
     document.getElementById("signupForm").addEventListener("submit", function (e) {
       e.preventDefault();
       const username = document.getElementById("username").value.trim();
@@ -75,34 +69,12 @@
         window.location.href = "dashboard.html";
       }
     });
-  </script>
 
-  <!-- المؤشر وتأثير ripple + Sidebar -->
-  <script>
-    const cursor   = document.getElementById('customCursor');
+    // Sidebar functionality
     const burger   = document.querySelector('.burger');
     const sidebar  = document.getElementById('sidebar');
     const overlay  = document.getElementById('overlay');
 
-    // المؤشر
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.top = e.clientY + 'px';
-      cursor.style.left = e.clientX + 'px';
-    });
-    document.addEventListener('mousedown', () => cursor.classList.add('cursor-click'));
-    document.addEventListener('mouseup', () => cursor.classList.remove('cursor-click'));
-    document.addEventListener('click', (e) => {
-      const ripple = document.createElement('div');
-      ripple.className = 'ripple';
-      const size = 15;
-      ripple.style.width = ripple.style.height = size + 'px';
-      ripple.style.left = (e.clientX - size/2) + 'px';
-      ripple.style.top = (e.clientY - size/2) + 'px';
-      document.body.appendChild(ripple);
-      ripple.addEventListener('animationend', () => ripple.remove());
-    });
-
-    // Sidebar
     function openSidebar() {
       sidebar.classList.add('active');
       overlay.classList.add('show');
@@ -114,18 +86,35 @@
       document.body.style.overflow = '';
     }
     burger.addEventListener('click', () => {
-      if (sidebar.classList.contains('active')) {
-        closeSidebar();
-      } else {
-        openSidebar();
-      }
+      sidebar.classList.contains('active') ? closeSidebar() : openSidebar();
     });
     overlay.addEventListener('click', closeSidebar);
     sidebar.addEventListener('click', (e) => {
       if (e.target.tagName === 'A') closeSidebar();
     });
 
-    // زر العين للباسورد
+    // Custom cursor
+    const cursor = document.getElementById('customCursor');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.top = e.clientY + 'px';
+      cursor.style.left = e.clientX + 'px';
+    });
+    document.addEventListener('mousedown', () => cursor.classList.add('cursor-click'));
+    document.addEventListener('mouseup', () => cursor.classList.remove('cursor-click'));
+
+    // Ripple effect
+    document.addEventListener('click', (e) => {
+      const ripple = document.createElement('div');
+      ripple.className = 'ripple';
+      const size = 15;
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = (e.clientX - size/2) + 'px';
+      ripple.style.top = (e.clientY - size/2) + 'px';
+      document.body.appendChild(ripple);
+      ripple.addEventListener('animationend', () => ripple.remove());
+    });
+
+    // Password Eye
     const passwordInput = document.getElementById("password");
     const togglePassword = document.getElementById("togglePassword");
     togglePassword.addEventListener("click", () => {
@@ -133,41 +122,13 @@
       passwordInput.type = isPassword ? "text" : "password";
       togglePassword.classList.toggle("active");
     });
-  </script>
 
-  <!-- Dark Mode JavaScript -->
-  <script>
-    // Check for saved dark mode preference or default to light mode
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    const toggleButton = document.querySelector('.dark-mode-toggle');
-    
-    if (currentTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        toggleButton.innerHTML = '☀️';
-        toggleButton.style.background = '#FFDE6A';
-        toggleButton.style.color = '#000000';
-    }
-
-    function toggleDarkMode() {
-        const body = document.body;
-        const toggleButton = document.querySelector('.dark-mode-toggle');
-        
-        body.classList.toggle('dark-mode');
-        
-        if (body.classList.contains('dark-mode')) {
-            // Switch to dark mode
-            toggleButton.innerHTML = '☀️';
-            toggleButton.style.background = '#F5DEB3';
-            toggleButton.style.color = '#000000';
-            localStorage.setItem('theme', 'dark');
-        } else {
-            // Switch to light mode
-            toggleButton.innerHTML = '🌙';
-            toggleButton.style.background = 'rgba(255, 193, 7, 0.9)';
-            toggleButton.style.color = '#3b141c';
-            localStorage.setItem('theme', 'light');
-        }
-    }
+    // Dark Mode Toggle
+    const toggle = document.getElementById('darkModeToggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      toggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    });
   </script>
 </body>
 </html>
