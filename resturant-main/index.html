@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coffee Shop</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="navbar.css" />
+  <link rel="stylesheet" href="sidebar.css" />
+  <script defer src="index.js"></script>
+  <script defer src="navbar.js"></script>
+  <script defer src="sidebar.js"></script>
+</head>
+
+<body class="home-page">
+
+  <div class="custom-cursor" id="customCursor"></div>
+
+  <!-- ====== Header ====== -->
+  <header>
+    <nav class="navbar">
+      <a href="#" class="nav-logo">
+        <h2 class="logo-text">...coffee paradise</h2>
+      </a>
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="index.html" class="nav-link">About</a></li>
+        <!-- profile -->
+        <li class="nav-item"><a href="profile.html" class="nav-link">profile</a></li>
+        <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
+        <!-- <li class="nav-item"><a href="#" class="nav-link">Gallery</a></li> -->
+        <li class="nav-item"><a href="chat_mosha.html" class="nav-link">Contact</a></li>
+        <li class="nav-item"><a href="Testers.html" class="nav-link">Testers</a></li>
+      </ul>
+    </nav>
+
+  <!-- Dark Mode Toggle -->
+  <div class="dark-mode-toggle" onclick="toggleDarkMode()" style="position: fixed; top: 20px; left: 20px; z-index: 1102; background: rgba(255, 193, 7, 0.9); color: #3b141c; padding: 10px; border-radius: 50%; cursor: pointer; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 20px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);">
+    🌙
+  </div>
+
+  <div class="burger" onclick="toggleSidebar()">☰</div>
+  <div id="sidebar" class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="profile.html">Profile</a>
+    <a href="login.html">Sign In</a>
+    <a href="sign up.html">Sign Up</a>
+    <a href="menu.html">Menu</a>
+    <a href="chat_mosha.html">Contact</a>
+    <a href="Testers.html">Testers</a>
+  </div>
+  <div id="sidebar-overlay" class="sidebar-overlay" onclick="closeSidebar()"></div>
+  </header>
+
+  <!-- ====== Main Hero Section ====== -->
+  <main>
+    <section class="hero-section">
+      <div class="section-content">
+        <div class="hero-details">
+          <h2 class="title">Best Coffee in Town</h2>
+          <h3 class="subtitle">Make your day great with our special coffee!</h3>
+          <p class="description">
+            Welcome to our coffee paradise, where every bean tells a story<br> 
+            and every cup sparks joy.
+          </p>
+          <div class="buttons">
+            <a href="menu.html" class="button order-now">Order Now</a>
+            <a href="chat_mosha.html" class="button contact-us">Contact Us</a>
+          </div>
+        </div>  
+      </div>
+    </section> <!-- ✅ اتقفلت صح -->
+  </main>
+
+  <style>
+    /* ====== Menu Section ====== */
+    .menu-title {
+      font-size: 32px;
+      margin-bottom: 40px;
+      color: #3b141c;
+      font-weight: 700;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .menu-title::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: #c49a6c;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    .menu-section {
+      padding: 60px 20px;
+      text-align: center;
+      margin-top: 200px; /* ✅ زودت المسافة بين الهيرو والـ Menu */
+    }
+
+    .menu-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .menu-item {
+      background: #fff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      width: 220px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .menu-image {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .menu-item-title {
+      font-size: 20px;
+      margin-top: 15px;
+      color: #3b141c;
+      font-weight: 600;
+    }
+
+    .menu-item-description {
+      font-size: 14px;
+      color: #555;
+      margin: 10px 0;
+    }
+
+    .menu-item-price {
+      font-size: 16px;
+      color: #6f4e37;
+      font-weight: 700;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .menu-items {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .menu-item {
+        width: 90%;
+        max-width: 350px;
+      }
+    }
+  </style>
+
+  <!-- JS scripts already included in <head> -->
+</body>
+</html>

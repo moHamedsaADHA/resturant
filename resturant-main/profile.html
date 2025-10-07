@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile - Coffee Paradise</title>
+  <link rel="stylesheet" href="profile.css"/>
+  <link rel="stylesheet" href="navbar.css" />
+  <link rel="stylesheet" href="sidebar.css" />
+  <script defer src="profile.js"></script>
+  <script defer src="navbar.js"></script>
+  <script defer src="sidebar.js"></script>
+</head>
+
+<body class="profile-page">
+  <div class="custom-cursor" id="customCursor"></div>
+
+  <!-- ====== Header ====== -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="nav-logo">
+        <h2 class="logo-text">☕ Coffee Paradise</h2>
+      </a>
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
+        <li class="nav-item"><a href="profile.html" class="nav-link active">Profile</a></li>
+        <li class="nav-item"><a href="chat_mosha.html" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle" onclick="toggleDarkMode()">
+      <span id="theme-icon">🌙</span>
+    </div>
+
+    <div class="burger" onclick="toggleSidebar()">☰</div>
+    <div id="sidebar" class="sidebar">
+      <a href="index.html">🏠 Home</a>
+      <a href="profile.html">👤 Profile</a>
+      <a href="menu.html">☕ Menu</a>
+      <a href="chat_mosha.html">💬 Contact</a>
+      <a href="Testers.html">🧪 Testers</a>
+      <a href="login.html">🔐 Sign In</a>
+      <a href="sign up.html">📝 Sign Up</a>
+    </div>
+    <div id="sidebar-overlay" class="sidebar-overlay" onclick="closeSidebar()"></div>
+  </header>
+
+  <!-- Profile Content --> -->
+  <main>
+    <div class="profile-container">
+      <!-- Profile Header -->
+      <div class="profile-header">
+        <div class="profile-avatar">
+          <span id="user-avatar"></span>
+        </div>
+        <div class="profile-info">
+          <h1 id="user-name">Coffee Lover</h1>
+          <p id="user-email">coffee.lover@example.com</p>
+          <p id="user-member-since">Member since January 2024</p>
+          <div class="profile-stats">
+            <div class="profile-stat">
+              <span class="profile-stat-value" id="orders-count">24</span>
+              <span class="profile-stat-label">Orders</span>
+            </div>
+            <div class="profile-stat">
+              <span class="profile-stat-value" id="rewards-points">1,250</span>
+              <span class="profile-stat-label">Points</span>
+            </div>
+            <div class="profile-stat">
+              <span class="profile-stat-value" id="account-balance">$45.30</span>
+              <span class="profile-stat-label">Balance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Main Content -->
+      <div class="profile-main">
+        <!-- Profile Tabs -->
+        <div class="profile-tabs">
+          <div class="tab-nav">
+            <button class="tab-btn active" data-tab="overview">Overview</button>
+            <button class="tab-btn" data-tab="cart">Cart & Favorites</button>
+            <button class="tab-btn" data-tab="delivery">Delivery</button>
+            <button class="tab-btn" data-tab="reservations">Reservations</button>
+            <button class="tab-btn" data-tab="faq">FAQ</button>
+          </div>
+
+          <div class="tab-content">
+            <!-- Overview Tab -->
+            <div class="tab-pane active" id="overview">
+              <h2>Account Overview</h2>
+              <p>Welcome to your Coffee Paradise profile! Here you can manage all aspects of your coffee experience.</p>
+              
+              <h3>Current Offers</h3>
+              <div class="offers-grid">
+                <div class="offer-card">
+                  <div class="offer-icon">🎉</div>
+                  <h4>Welcome Bonus</h4>
+                  <p>Get 20% off your next order with code WELCOME20</p>
+                  <span class="offer-expiry">Expires: Dec 31, 2024</span>
+                </div>
+                <div class="offer-card">
+                  <div class="offer-icon">☕</div>
+                  <h4>Loyalty Reward</h4>
+                  <p>Free coffee after 10 purchases - 3 more to go!</p>
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 70%"></div>
+                  </div>
+                </div>
+                <div class="offer-card">
+                  <div class="offer-icon">🎁</div>
+                  <h4>Birthday Special</h4>
+                  <p>Special birthday surprise coming your way!</p>
+                  <span class="offer-expiry">Available: Jan 15, 2025</span>
+                </div>
+              </div>
+
+              <h3>Recent Activity</h3>
+              <div class="activity-list">
+                <div class="activity-item">
+                  <div class="activity-icon">📦</div>
+                  <div class="activity-details">
+                    <h4>Order Delivered</h4>
+                    <p>Cappuccino & Chocolate Croissant - $12.50</p>
+                    <span class="activity-time">2 hours ago</span>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-icon">⭐</div>
+                  <div class="activity-details">
+                    <h4>Points Earned</h4>
+                    <p>125 points from recent purchase</p>
+                    <span class="activity-time">2 hours ago</span>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-icon">💰</div>
+                  <div class="activity-details">
+                    <h4>Balance Added</h4>
+                    <p>$25.00 added to your account</p>
+                    <span class="activity-time">Yesterday</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cart & Favorites Tab -->
+            <div class="tab-pane" id="cart">
+              <h2>Cart & Favorites</h2>
+              
+              <h3>Current Cart</h3>
+              <div class="cart-items">
+                <div class="cart-item">
+                  <div class="item-image">☕</div>
+                  <div class="item-details">
+                    <h4>Premium Espresso</h4>
+                    <p>Double shot, extra hot</p>
+                  </div>
+                  <div class="item-quantity">
+                    <button class="qty-btn" onclick="updateQuantity('espresso', -1)">-</button>
+                    <span id="espresso-qty">2</span>
+                    <button class="qty-btn" onclick="updateQuantity('espresso', 1)">+</button>
+                  </div>
+                  <div class="item-price">$8.50</div>
+                </div>
+                <div class="cart-item">
+                  <div class="item-image">🥐</div>
+                  <div class="item-details">
+                    <h4>Almond Croissant</h4>
+                    <p>Fresh baked daily</p>
+                  </div>
+                  <div class="item-quantity">
+                    <button class="qty-btn" onclick="updateQuantity('croissant', -1)">-</button>
+                    <span id="croissant-qty">1</span>
+                    <button class="qty-btn" onclick="updateQuantity('croissant', 1)">+</button>
+                  </div>
+                  <div class="item-price">$4.50</div>
+                </div>
+              </div>
+              <div class="cart-total">
+                <h3>Total: <span id="cart-total">$13.00</span></h3>
+                <button class="button primary" onclick="proceedToCheckout()">Proceed to Checkout</button>
+              </div>
+
+              <h3>Your Favorites</h3>
+              <div class="favorites-items">
+                <div class="favorite-item">
+                  <div class="item-image">☕</div>
+                  <div class="item-details">
+                    <h4>Caramel Macchiato</h4>
+                    <p>Your most ordered drink</p>
+                  </div>
+                  <button class="button secondary" onclick="addToCart('macchiato')">Add to Cart</button>
+                </div>
+                <div class="favorite-item">
+                  <div class="item-image">🧁</div>
+                  <div class="item-details">
+                    <h4>Blueberry Muffin</h4>
+                    <p>Perfect with morning coffee</p>
+                  </div>
+                  <button class="button secondary" onclick="addToCart('muffin')">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Delivery Tab -->
+            <div class="tab-pane" id="delivery">
+              <h2>Delivery Information</h2>
+              
+              <h3>Current Delivery Status</h3>
+              <div class="delivery-status">
+                <div class="status-icon">🚀</div>
+                <div class="status-details">
+                  <h4>Order in Progress</h4>
+                  <p>Your barista is crafting your perfect coffee</p>
+                </div>
+                <div class="status-time">
+                  <strong>Estimated: 15 mins</strong>
+                </div>
+              </div>
+
+              <h3>Delivery Details</h3>
+              <div class="delivery-info">
+                <div class="info-group">
+                  <label>Delivery Address</label>
+                  <p>123 Coffee Street, Apt 4B<br>Java City, JC 12345</p>
+                  <button class="button secondary" onclick="changeAddress()">Change Address</button>
+                </div>
+                
+                <div class="info-group">
+                  <label>Estimated Delivery Time</label>
+                  <p><strong>15-20 minutes</strong></p>
+                  <p class="info-note">Based on current location and traffic</p>
+                </div>
+                
+                <div class="info-group">
+                  <label>Delivery Cost</label>
+                  <p><strong>$2.99</strong></p>
+                  <p class="info-note">Free delivery on orders over $25</p>
+                </div>
+                
+                <div class="info-group">
+                  <label>Delivery Instructions</label>
+                  <textarea placeholder="Add special delivery instructions..." rows="3"></textarea>
+                </div>
+              </div>
+
+              <h3>Delivery History</h3>
+              <div class="delivery-history">
+                <div class="delivery-item">
+                  <div class="delivery-date">Today, 2:30 PM</div>
+                  <div class="delivery-details">
+                    <h4>Order #1234 - Delivered</h4>
+                    <p>Cappuccino, Chocolate Croissant - $12.50</p>
+                    <p>Delivered in 18 minutes</p>
+                  </div>
+                </div>
+                <div class="delivery-item">
+                  <div class="delivery-date">Yesterday, 9:15 AM</div>
+                  <div class="delivery-details">
+                    <h4>Order #1233 - Delivered</h4>
+                    <p>Latte, Blueberry Muffin - $9.75</p>
+                    <p>Delivered in 22 minutes</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Reservations Tab -->
+            <div class="tab-pane" id="reservations">
+              <h2>Seat Reservations</h2>
+              <p>Reserve your favorite spot in our cozy coffee shop!</p>
+              
+              <div class="reservation-form">
+                <div class="form-group">
+                  <label for="reservation-date">Date</label>
+                  <input type="date" id="reservation-date" min="" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="reservation-time">Time</label>
+                  <select id="reservation-time" required>
+                    <option value="">Select time</option>
+                    <option value="08:00">8:00 AM</option>
+                    <option value="09:00">9:00 AM</option>
+                    <option value="10:00">10:00 AM</option>
+                    <option value="11:00">11:00 AM</option>
+                    <option value="12:00">12:00 PM</option>
+                    <option value="13:00">1:00 PM</option>
+                    <option value="14:00">2:00 PM</option>
+                    <option value="15:00">3:00 PM</option>
+                    <option value="16:00">4:00 PM</option>
+                    <option value="17:00">5:00 PM</option>
+                    <option value="18:00">6:00 PM</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="party-size">Party Size</label>
+                  <select id="party-size" required>
+                    <option value="">Select size</option>
+                    <option value="1">1 person</option>
+                    <option value="2">2 people</option>
+                    <option value="3">3 people</option>
+                    <option value="4">4 people</option>
+                    <option value="5">5+ people</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="seating-preference">Seating Preference</label>
+                  <select id="seating-preference">
+                    <option value="">No preference</option>
+                    <option value="window">Window seat</option>
+                    <option value="quiet">Quiet corner</option>
+                    <option value="bar">Coffee bar</option>
+                    <option value="outdoor">Outdoor patio</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="special-requests">Special Requests</label>
+                  <textarea id="special-requests" rows="3" placeholder="Any special accommodations or requests..."></textarea>
+                </div>
+                
+                <button class="button primary" onclick="makeReservation()">Reserve Table</button>
+              </div>
+
+              <div class="reservation-summary" id="reservation-summary" style="display: none;">
+                <h3>Reservation Confirmed!</h3>
+                <p id="confirmation-details"></p>
+                <p>We'll send you a reminder 1 hour before your reservation.</p>
+              </div>
+
+              <h3>Your Reservations</h3>
+              <div class="reservations-list">
+                <div class="reservation-item">
+                  <div class="reservation-info">
+                    <h4>Today at 3:00 PM</h4>
+                    <p>Table for 2 - Window seat</p>
+                    <p>Confirmation: #RES123</p>
+                  </div>
+                  <div class="reservation-actions">
+                    <button class="button secondary" onclick="modifyReservation('RES123')">Modify</button>
+                    <button class="button" onclick="cancelReservation('RES123')" style="background: #dc3545; color: white;">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ Tab -->
+            <div class="tab-pane" id="faq">
+              <h2>Frequently Asked Questions</h2>
+              <p>Find answers to common questions about our coffee shop and services.</p>
+              
+              <div class="faq-list">
+                <div class="faq-item">
+                  <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What are your opening hours?</span>
+                    <span class="faq-toggle">+</span>
+                  </button>
+                  <div class="faq-answer">
+                    <p>We're open Monday to Friday from 6:00 AM to 10:00 PM, weekends from 7:00 AM to 11:00 PM. We're closed on major holidays.</p>
+                  </div>
+                </div>
+
+                <div class="faq-item">
+                  <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Do you offer vegan and dairy-free options?</span>
+                    <span class="faq-toggle">+</span>
+                  </button>
+                  <div class="faq-answer">
+                    <p>Yes! We offer oat milk, almond milk, soy milk, and coconut milk alternatives. We also have vegan pastries and snacks clearly marked on our menu.</p>
+                  </div>
+                </div>
+
+                <div class="faq-item">
+                  <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How does the rewards program work?</span>
+                    <span class="faq-toggle">+</span>
+                  </button>
+                  <div class="faq-answer">
+                    <p>Earn 1 point for every $1 spent. Collect 100 points to get a free drink. Plus, enjoy member-exclusive offers, birthday rewards, and early access to new menu items.</p>
+                  </div>
+                </div>
+
+                <div class="faq-item">
+                  <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Can I customize my drink orders?</span>
+                    <span class="faq-toggle">+</span>
+                  </button>
+                  <div class="faq-answer">
+                    <p>Absolutely! You can adjust milk type, sweetness level, add extra shots, choose your size, and request special preparations. Just let us know your preferences when ordering.</p>
+                  </div>
+                </div>
+
+                <div class="faq-item">
+                  <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What's your delivery radius and fee?</span>
+                    <span class="faq-toggle">+</span>
+                  </button>
+                  <div class="faq-answer">
+                    <p>We deliver within a 5-mile radius of our shop. Delivery fee is $2.99, but it's free on orders over $25. Typical delivery time is 15-25 minutes depending on traffic.</p>
+                  </div>
+                </div>
+
+                <div class="faq-item">
+                  <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Do you accept reservations?</span>
+                    <span class="faq-toggle">+</span>
+                  </button>
+                  <div class="faq-answer">
+                    <p>Yes! You can reserve a table through this profile page. We recommend booking in advance, especially for weekend mornings and evening study sessions.</p>
+                  </div>
+                </div>
+
+                <div class="faq-item">
+                  <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What safety measures do you have in place?</span>
+                    <span class="faq-toggle">+</span>
+                  </button>
+                  <div class="faq-answer">
+                    <p>We maintain the highest hygiene standards, regular sanitization, contactless payment options, and follow all local health guidelines to ensure your safety.</p>
+                  </div>
+                </div>
+
+                <div class="faq-item">
+                  <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Can I host events or meetings at your shop?</span>
+                    <span class="faq-toggle">+</span>
+                  </button>
+                  <div class="faq-answer">
+                    <p>We welcome small meetings and study groups. For larger events, please contact us in advance to discuss availability and arrangements. We offer group discounts for orders over $50.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile Sidebar -->
+        <div class="profile-sidebar">
+          <div class="sidebar-card">
+            <h3>Quick Actions</h3>
+            <div class="quick-actions">
+              <button class="button primary" onclick="reorderLast()">Reorder Last</button>
+              <button class="button secondary" onclick="viewOrderHistory()">Order History</button>
+              <button class="button secondary" onclick="managePayments()">Payment Methods</button>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h3>Loyalty Status</h3>
+            <div class="loyalty-info">
+              <div class="loyalty-tier">
+                <span class="tier-badge">☕ Gold Member</span>
+                <p>Next tier: <strong>Platinum</strong></p>
+              </div>
+              <div class="loyalty-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 60%"></div>
+                </div>
+                <p>$200 more to reach Platinum</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h3>Contact Support</h3>
+            <p>Need help? We're here for you!</p>
+            <button class="button secondary" onclick="contactSupport()">Get Help</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Dark mode functionality
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    const themeIcon = document.getElementById('theme-icon');
+    
+    if (currentTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeIcon.textContent = '☀️';
+    }
+
+    // Set minimum date for reservations to today
+    document.getElementById('reservation-date').min = new Date().toISOString().split('T')[0];
+  </script>
+</body>
+</html>

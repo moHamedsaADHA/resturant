@@ -1,0 +1,310 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Body */
+body {
+  background: linear-gradient(135deg, #3b141c, #f7f7f7);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 1rem;
+  transition: background 0.5s, color 0.5s;
+  overflow-x: hidden;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background: #000000;
+  color: #faf0d2;
+}
+
+/* Burger Menu */
+.burger {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #fff;
+  z-index: 1101;
+}
+
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 1102;
+  color: #fff;
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 20px; height: 20px;
+  border: 2px solid #ffc107;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out;
+  z-index: 2000;
+}
+.cursor-click {
+  transform: translate(-50%, -50%) scale(0.7);
+  background: rgba(255, 193, 7, 0.3);
+}
+
+/* Ripple */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 193, 7, 0.3);
+  animation: ripple-animation 0.6s linear;
+  pointer-events: none;
+  z-index: 1500;
+}
+@keyframes ripple-animation {
+  from { transform: scale(0); opacity: 0.5; }
+  to { transform: scale(10); opacity: 0; }
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 250px;
+  height: 100%;
+  background-color: #3b141c;
+  padding-top: 60px;
+  transition: left 0.3s ease-in-out;
+  z-index: 1000;
+}
+.sidebar.active { left: 0; }
+.sidebar a {
+  display: block;
+  padding: 15px 25px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.sidebar a:hover {
+  background-color: #faf0d2;
+  color: #000;
+  text-decoration: underline;
+  text-decoration-color: #ff0000;
+}
+.sidebar a.active { background: #ffc107; color: #000; }
+
+/* Dark Mode Sidebar */
+body.dark-mode .sidebar { background: #3b141c; }
+body.dark-mode .sidebar a { color: #faf0d2; }
+body.dark-mode .sidebar a:hover { color: #000; background: #faf0d2; }
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+  z-index: 999;
+}
+.overlay.show { opacity: 1; pointer-events: auto; }
+
+/* Placeholders */
+.mosha::placeholder,
+.mosha1::placeholder,
+.mosha2::placeholder,
+.mosha3::placeholder,
+.mosha4::placeholder,
+.mosha5::placeholder {
+  color: #ffffff;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+body.dark-mode .mosha::placeholder,
+body.dark-mode .mosha1::placeholder,
+body.dark-mode .mosha2::placeholder,
+body.dark-mode .mosha3::placeholder,
+body.dark-mode .mosha4::placeholder,
+body.dark-mode .mosha5::placeholder {
+  color: rgba(250,240,210,0.7);
+}
+
+/* Login Page */
+.login-page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-box {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  backdrop-filter: blur(4px);
+  transition: all 0.5s ease;
+}
+.login-box:hover { background: #fff; box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+body.dark-mode .login-box { background: rgba(250,240,210,0.1); border: 1px solid #faf0d2; }
+.login-box h2 { margin-bottom: 25px; color: #3b141c; font-weight: 700; font-size: 24px; }
+body.dark-mode .login-box h2 { color: #faf0d2; }
+.login-box input[type="text"],
+.login-box input[type="password"],
+.login-box input[type="email"] {
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #3b141c;
+  color: #fff;
+  font-size: 16px;
+  transition: 0.3s;
+}
+body.dark-mode .login-box input { background: rgba(250,240,210,0.1); border: 1px solid #faf0d2; color: #faf0d2; }
+.login-box input:focus { background: #a0522d; border-color: #ffc107; box-shadow: 0 0 5px #000; }
+
+/* Password Eye */
+/* ===== Password eye positioning (works for .password-container and .password-wrapper) ===== */
+.password-container,
+.password-wrapper {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+/* اعمل مساحة كافية على اليمين داخل حقل الباسورد علشان العين */
+.password-container input[type="password"],
+.password-wrapper input[type="password"] {
+  padding-right: 48px; /* مساحة العين */
+  box-sizing: border-box;
+}
+
+/* ستايل أيقونة العين */
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;               /* المسافة من اليمين */
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  border-radius: 6px;
+  background: transparent;   /* لو حبيت لون للخلفية غيره */
+  color: #ffc107;
+  transition: background .15s, color .15s, transform .08s;
+}
+.toggle-password:active { transform: translateY(-50%) scale(0.95); }
+
+/* حالة مفعّل (لو بتحوّل أيقونة أو لون عند الفتح) */
+.toggle-password.active {
+  color: #000;
+  background: rgba(255,255,255,0.85);
+}
+
+/* Dark mode adjustments (لو بتستخدم body.dark-mode أو body.dark) */
+body.dark-mode .toggle-password,
+body.dark .toggle-password {
+  color: #ffc107;
+}
+body.dark-mode .toggle-password.active,
+body.dark .toggle-password.active {
+  color: #000;
+  background: rgba(250,240,210,0.95);
+}
+
+/* أصغر شاشه */
+@media (max-width: 480px) {
+  .toggle-password { right: 8px; width: 28px; height: 28px; font-size: 16px; }
+  .password-container input[type="password"],
+  .password-wrapper input[type="password"] { padding-right: 42px; }
+}
+
+/* Button */
+.login-box button.login-btn {
+  background: #ffc107;
+  color: #000;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  width: 100%;
+  margin-top: 15px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+.login-box button.login-btn:hover {
+  width: 110%;
+  background: linear-gradient(to right, #fff 0%, #ffc107 100%);
+  transform: scaleX(1.05);
+}
+
+/* Hero Image Behind */
+.hero-image-wrapper1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  opacity: 0.25;
+  width: 600px;
+  max-width: 90%;
+  height: auto;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.login-box:hover ~ .hero-image-wrapper1 { opacity: 0; }
+.hero-image-wrapper1 img { width: 100%; height: auto; }
+
+/* Signup/Login link */
+.login-link { margin-top: 15px; font-size: 14px; color: #333; }
+.login-link a { color: #3b141c; font-weight: 600; text-decoration: none; }
+.login-link a:hover { text-decoration: underline; }
+body.dark-mode .login-link { color: #faf0d2; }
+body.dark-mode .login-link a { color: #ffc107; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .login-box { max-width: 90%; padding: 30px 20px; }
+  .burger { font-size: 1.8rem; }
+  .sidebar { width: 200px; }
+  .hero-image-wrapper1 { width: 80%; top: 60%; }
+}
+@media (max-width: 480px) {
+  .login-box { padding: 20px 15px; }
+  .login-box h2 { font-size: 20px; }
+  .login-box input, 
+  .login-box button.login-btn { font-size: 14px; padding: 12px; }
+  .hero-image-wrapper1 { width: 90%; top: 65%; }
+}

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url("restaurant-4k-wallpapers.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .dashboard-box {
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      max-width: 500px;
+      width: 90%;
+    }
+
+    h1 {
+      color: #3b141c;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    a {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #ffc107;
+      color: #000;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    a:hover {
+      background-color: #e0ac00;
+    }
+
+    @media (max-width: 600px) {
+      .dashboard-box {
+        padding: 30px 20px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+    }
+  </style>
+  <style>
+  /* المؤشر المخصص */
+  .custom-cursor {
+    position: fixed;
+    top: 0; left: 0;
+    width: 20px; height: 20px;
+    border: 2px solid #ffc107;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out;
+    z-index: 2000;
+  }
+  .cursor-click {
+    transform: translate(-50%, -50%) scale(0.7);
+    background: rgba(255, 193, 7, 0.3);
+  }
+
+  /* تأثير ripple عند الضغط */
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 193, 7, 0.3);
+    animation: ripple-animation 0.6s linear;
+    pointer-events: none;
+    z-index: 1500;
+  }
+  @keyframes ripple-animation {
+    from {
+      transform: scale(0);
+      opacity: 0.5;
+    }
+    to {
+      transform: scale(10);
+      opacity: 0;
+    }
+  }
+</style>
+
+  <link rel="stylesheet" href="navbar.css" />
+
+</head>
+<body>
+
+  <div class="dark-mode-toggle" onclick="toggleDarkMode()" style="position: fixed; top: 20px; left: 20px; z-index: 1102; background: rgba(255, 193, 7, 0.9); color: #3b141c; padding: 10px; border-radius: 50%; cursor: pointer; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 20px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);">🌙</div>
+  <div class="custom-cursor" id="customCursor"></div>
+
+  <div class="dashboard-box">
+    <h1 id="welcomeMsg">Welcome!</h1>
+    <p id="statusMsg">Great to see you! You're in.</p>
+    <a href="login.html" onclick="logout()">Log Out</a>
+    <a href="index.html">Back to Home</a>
+  </div>
+
+  <script>
+    const userName = localStorage.getItem("userName");
+    const welcomeMsg = document.getElementById("welcomeMsg");
+    const statusMsg = document.getElementById("statusMsg");
+
+    if (!userName) {
+      window.location.href = "login.html"; // رجع لصفحة الدخول لو مفيش اسم
+    } else {
+      welcomeMsg.innerText = `Welcome, ${userName}!`;
+      statusMsg.innerText = "Great to see you! You're in.";
+    }
+
+    function logout() {
+      localStorage.removeItem("userName");
+    }
+  </script>
+  <script>
+  const cursor = document.getElementById('customCursor');
+
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.top = e.clientY + 'px';
+    cursor.style.left = e.clientX + 'px';
+  });
+
+  document.addEventListener('mousedown', () => {
+    cursor.classList.add('cursor-click');
+  });
+
+  document.addEventListener('mouseup', () => {
+    cursor.classList.remove('cursor-click');
+  });
+
+  document.addEventListener('click', (e) => {
+    const ripple = document.createElement('div');
+    ripple.className = 'ripple';
+        const size = 15;
+    // const size = Math.max(window.innerWidth, window.innerHeight);
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = (e.clientX - size/2) + 'px';
+    ripple.style.top = (e.clientY - size/2) + 'px';
+    document.body.appendChild(ripple);
+    ripple.addEventListener('animationend', () => ripple.remove());
+  });
+</script>
+  <script defer src="navbar.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="sign.css" />
+  <link rel="stylesheet" href="navbar.css" />
+  <link rel="stylesheet" href="sidebar.css" />
+  <script defer src="navbar.js"></script>
+  <script defer src="sidebar.js"></script>
+</head>
+<body>
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="customCursor"></div>
+
+  <!-- Burger Menu -->
+  <div class="burger" onclick="toggleSidebar()">☰</div>
+
+  <!-- Dark Mode Toggle -->
+  <div class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</div>
+
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="profile.html">Profile</a>
+    <a href="sign up.html">Sign up</a>
+    <a href="menu.html">Menu</a>
+    <a href="chat_mosha.html">Contact</a>
+    <a href="Testers.html">Testers</a>
+  </div>
+  <div id="sidebar-overlay" class="sidebar-overlay" onclick="closeSidebar()"></div>
+
+  <!-- Main Login Section -->
+  <main class="login-page">
+    <section class="login-box">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input class="mosha" type="text" id="username" placeholder="Username" required />
+        <input class="mosha" type="email" id="email" placeholder="Email" required />
+
+        <!-- Password with Eye -->
+        <div class="password-wrapper">
+          <input class="mosha2" type="password" id="password" placeholder="Password" required />
+          <span class="toggle-password" id="togglePassword">👁</span>
+        </div>
+
+        <button type="submit" class="login-btn">Login</button>
+        <p class="signup-link">Don't have an account? <a href="sign up.html">Sign Up</a></p>
+      </form>
+    </section>
+  </main>
+
+  <!-- Hero Image (Background) -->
+  <div class="hero-image-wrapper1">
+    <img src="desserts.png" alt="Coffee Cup" class="hero-image" />
+  </div>
+
+  <!-- JS -->
+  <script>
+    // Local only: login form redirect and small UI helpers
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      window.location.href = "index.html";
+    });
+
+    // Custom cursor
+    const cursor = document.getElementById('customCursor');
+    document.addEventListener('mousemove', (e) => {
+      if(cursor){ cursor.style.top = e.clientY + 'px'; cursor.style.left = e.clientX + 'px'; }
+    });
+    document.addEventListener('mousedown', () => { if(cursor) cursor.classList.add('cursor-click'); });
+    document.addEventListener('mouseup', () => { if(cursor) cursor.classList.remove('cursor-click'); });
+
+    // Ripple effect
+    document.addEventListener('click', (e) => {
+      const ripple = document.createElement('div');
+      ripple.className = 'ripple';
+      const size = 15;
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = (e.clientX - size/2) + 'px';
+      ripple.style.top = (e.clientY - size/2) + 'px';
+      document.body.appendChild(ripple);
+      ripple.addEventListener('animationend', () => ripple.remove());
+    });
+
+    // Toggle Password Visibility
+    const passwordInput = document.getElementById("password");
+    const togglePassword = document.getElementById("togglePassword");
+    if(togglePassword && passwordInput) togglePassword.addEventListener("click", () => {
+      const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+      passwordInput.setAttribute("type", type);
+      togglePassword.textContent = type === "password" ? "👁" : "🙈";
+    });
+  </script>
+</body>
+</html>

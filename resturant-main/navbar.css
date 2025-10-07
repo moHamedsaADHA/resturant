@@ -1,0 +1,77 @@
+/* Home page: transparent navbar background and black text ONLY in light mode */
+body.home-page:not(.dark-mode) .navbar {
+  background: transparent !important;
+}
+body.home-page:not(.dark-mode) .navbar, body.home-page:not(.dark-mode) .navbar * {
+  color: #ffffff !important;
+}
+body.Testers-page.dark-mode .navbar {
+  background: #000;
+}
+/* Unified Navbar Styles - light & dark mode ready */
+:root{
+  --nav-bg: rgba(255,255,255,0.9);
+  --nav-text: #2c2c2c;
+  --nav-accent: #c49a6c; /* warm accent */
+  --nav-glass: rgba(255,255,255,0.55);
+  --nav-radius: 40px;
+  --nav-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  --nav-link-bg-hover: linear-gradient(90deg,var(--nav-accent),#3b141c);
+}
+
+/* Dark mode variables (switched when body.dark-mode exists) */
+body.dark-mode{
+  --nav-bg: rgba(0,0,0,0.45);
+  --nav-text: #F5DEB3;
+  --nav-accent: #F5DEB3;
+  --nav-glass: rgba(0,0,0,0.35);
+  --nav-shadow: 0 8px 28px rgba(0,0,0,0.6);
+}
+
+/* Header container */
+header{position:sticky;top:0;z-index:1100;padding:0.75rem 1rem}
+
+.navbar{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;width:100%;background:var(--nav-bg);
+  backdrop-filter: blur(8px);-webkit-backdrop-filter:blur(8px);
+  border-radius: 0 0 var(--nav-radius) var(--nav-radius);
+  padding:0.6rem 1rem;box-shadow:var(--nav-shadow);
+}
+
+.nav-logo{display:flex;align-items:center;text-decoration:none}
+.logo-text{font-family:'Pacifico',cursive;font-size:1.6rem;color:var(--nav-text);margin:0}
+
+/* Primary menu */
+.nav-menu{display:flex;align-items:center;gap:1.6rem;list-style:none;margin:0;padding:0}
+.nav-menu li{margin:0}
+.nav-menu a, .navbar a, .nav-link{color:var(--nav-text);text-decoration:none;padding:0.45rem 0.9rem;border-radius:12px;display:inline-block;font-weight:600;transition:all .25s ease}
+
+.nav-menu a:hover, .nav-menu a.active, .nav-link:hover, .nav-link.active{
+  color:#fff;background:var(--nav-link-bg-hover);transform:translateY(-3px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.18)
+}
+
+/* Support both .hamburger and .burger controls used across pages */
+.hamburger,.burger{display:none;align-items:center;justify-content:center;cursor:pointer}
+.hamburger .bar{display:block;width:22px;height:3px;background:var(--nav-text);margin:3px 0;border-radius:2px;transition:all .25s}
+
+/* Mobile behavior */
+@media (max-width:900px){
+  .nav-menu{position:fixed;left:-110%;top:70px;right:0;display:flex;flex-direction:column;gap:0;padding:24px;background:var(--nav-bg);backdrop-filter:blur(14px);transition:left .32s cubic-bezier(.2,.8,.2,1);box-shadow:var(--nav-shadow)}
+  .nav-menu.active{left:0}
+  .hamburger,.burger{display:flex}
+  .nav-menu a{padding:14px 20px;border-radius:10px}
+}
+
+/* Accessibility helpers */
+.nav-menu a:focus{outline:2px solid rgba(0,0,0,0.08);outline-offset:3px}
+
+/* Sidebar compatibility (some pages use .sidebar) */
+.sidebar{transition:right .28s ease}
+
+/* Small polish */
+.dark-mode-toggle{z-index:1200}
+
+/* Ensure rules are specific enough to override page-level CSS if present */
+/* Explicit selector kept for future overrides - no empty rules needed */
