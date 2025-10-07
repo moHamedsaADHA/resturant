@@ -14,7 +14,7 @@
 body.dark-mode {
   --sidebar-bg: #000;
   --sidebar-link: #F5DEB3;
-  --sidebar-link-hover: #000;
+  --sidebar-link-hover: #ffffff;
   --sidebar-shadow: -4px 0 16px rgba(245,222,179,0.18);
   --sidebar-border: #F5DEB3;
   --burger-color: #F5DEB3;
