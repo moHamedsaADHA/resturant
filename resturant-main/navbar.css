@@ -36,14 +36,15 @@ header{position:sticky;top:0;z-index:1100;padding:0.75rem 1rem}
   gap:1rem;width:100%;background:var(--nav-bg);
   backdrop-filter: blur(8px);-webkit-backdrop-filter:blur(8px);
   border-radius: 0 0 var(--nav-radius) var(--nav-radius);
-  padding:0.6rem 1rem;box-shadow:var(--nav-shadow);
+  padding:0.6rem 2.5rem 0.6rem 1.5rem; /* more right padding for burger */
+  box-shadow:var(--nav-shadow);
 }
 
 .nav-logo{display:flex;align-items:center;text-decoration:none}
 .logo-text{font-family:'Pacifico',cursive;font-size:1.6rem;color:var(--nav-text);margin:0}
 
 /* Primary menu */
-.nav-menu{display:flex;align-items:center;gap:1.6rem;list-style:none;margin:0;padding:0}
+.nav-menu{display:flex;align-items:center;gap:1.6rem;list-style:none;margin:0;padding:0;margin-right:2.5rem;}
 .nav-menu li{margin:0}
 .nav-menu a, .navbar a, .nav-link{color:var(--nav-text);text-decoration:none;padding:0.45rem 0.9rem;border-radius:12px;display:inline-block;font-weight:600;transition:all .25s ease}
 

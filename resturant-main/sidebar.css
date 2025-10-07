@@ -104,14 +104,9 @@ body.dark-mode {
   .navbar {
     display: none !important;
   }
-  .burger {
-    display: flex !important;
-  }
 }
-@media (min-width: 901px) {
-  .burger {
-    display: none !important;
-  }
+.burger {
+  display: flex !important;
 }
 
 /* Sidebar scroll on small screens */
